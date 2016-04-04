@@ -1,0 +1,80 @@
+<style>
+    section {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    form div {
+        color: blue;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+     h1 {
+        color: red;
+        font-size: 30px;
+    }
+    .special a {
+        text-decoration: none;
+        color: forestgreen;
+        font-size: 20px;
+    }
+</style>
+<section data-ng-controller="ExperiencesController" data-ng-init="findOne()">
+    <h1>Edit Your Experience</h1>
+    <form data-ng-submit="update()" novalidate>
+        <div>
+            <label for="companyName">Company Name</label>
+            <div>
+                <input type="text" data-ng-model="experience.companyName" id="companyName" placeholder="Company Name" required>
+            </div>
+        </div>
+
+        <div>
+            <label for="city">City</label>
+            <div>
+                <input type="text" data-ng-model="experience.city" id="city" placeholder="City">
+            </div>
+        </div>
+        <div>
+            <label for="country">Country</label>
+            <div>
+                <input type="text" data-ng-model="experience.country" id="country" placeholder="Country">
+            </div>
+        </div>
+        <div>
+            <label for="startDate">Start Date</label>
+            <div>
+                <input type="date" data-ng-model="experience.startDate" id="startDate" placeholder="Start Date" required>
+            </div>
+        </div>
+        <div>
+            <label for="endDate">End Date</label>
+            <div>
+                <input type="date" data-ng-model="experience.endDate" id="endDate" placeholder="End Date" required>
+            </div>
+        </div>
+
+        <div>
+            <label for="position">Position</label>
+            <div>
+                <input type="text" data-ng-model="experience.position" id="position" placeholder="Position" required>
+            </div>
+        </div>
+        <div>
+            <label for="details">Details</label>
+            <div>
+                <input type="text" data-ng-model="experience.details" id="details" placeholder="Details">
+            </div>
+        </div>
+
+
+
+        <div>
+            <input type="submit" value="Update">
+        </div>
+        <div data-ng-show="error">
+            <strong data-ng-bind="error"></strong>
+        </div>
+    </form>
+    <hr>
+            <div class="special"> <a href="/#!/experiences">View My Experiences</a></div>
+</section>

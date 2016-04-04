@@ -1,0 +1,50 @@
+<style>
+    .special {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .special a {
+        text-decoration: none;
+        color: forestgreen;
+        font-size: 20px;
+    }
+    
+    h1 {
+        color: red;
+        font-size: 30px;
+    }
+    
+    p {
+        color: blue;
+        font-size: 20px;
+        margin: 5px;
+    }
+</style>
+
+<section class="special" ng-controller="clientModuleController">
+    <div data-ng-show="!authentication.user">
+        <h1>Welcome To My Portfolio Builder</h1>
+        <p>First Time Here ?<span><a href="/signup"> Signup</a></span></p>
+        <br>
+        <p>Already Have An Account ?<span><a href="/signin"> Signin</a></span></p>
+    </div>
+    <div data-ng-show="authentication.user">
+
+        <h1>Hello <span data-ng-bind="authentication.user.fullName"></span></h1>
+        <p>Student Number: <span data-ng-bind="authentication.user.studentNumber"></span></p>
+        <p>First Name: <span data-ng-bind="authentication.user.firstName"></span></p>
+        <p>Last Name: <span data-ng-bind="authentication.user.lastName"></span></p>
+        <p>Number: <span data-ng-bind="authentication.user.phoneNumber"></span></p>
+        <p>Email: <span data-ng-bind="authentication.user.email"></span></p>
+        <p>Address: <span data-ng-bind="authentication.user.address"></span></p>
+        <p>City: <span data-ng-bind="authentication.user.city"></span></p>
+        <p>Country: <span data-ng-bind="authentication.user.country"></span></p>
+
+        <hr>
+        <a href="/signout">Signout</a>
+        <ul>
+            <li><a href="/#!/experiences">View My Experiences</a></li>
+            <li><a href="/#!/experiences/create"> Add Experiences</a></li>
+        </ul>
+    </div>
+</section>

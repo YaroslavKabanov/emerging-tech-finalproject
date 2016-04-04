@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+    <%=title %>
+    </title>
+    
+    <style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    form div {
+        color: blue;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+     h1 {
+        color: red;
+        font-size: 30px;
+    }
+    .special a {
+        text-decoration: none;
+        color: forestgreen;
+        font-size: 20px;
+    }
+</style>
+</head>
+<body>
+<h1>Sign In</h1>
+    
+
+    <form action="/signin" method="post">
+    <% for(var i in messages) { %>
+    <div class="flash"><%= messages[i] %></div>
+    <% } %>
+        <div>
+        <label>Student Number:</label>
+        <!--Case sensitive username-->
+        <input type="text" name="username" />
+        </div>
+        <div>
+        <label>Password:</label>
+        <input type="password" name="password" />
+        </div>
+        <div>
+        <input type="submit" value="Sign In" />
+        </div>
+    </form>
+    
+    <hr>
+    <div class="special"> <a href="/#!/">Back To Home Page</a></div>
+
+</body>
+</html>
