@@ -1,3 +1,4 @@
+/*
 var mongoose = require('mongoose'),
     Experience = mongoose.model('Experience');
     //mongoose auto create collection name based on model name for you
@@ -175,3 +176,4 @@ exports.hasAuthorization = function (req, res, next) {
     }
     next();
 }
+*/

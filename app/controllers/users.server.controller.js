@@ -1,14 +1,13 @@
-var Student = require('mongoose').model('Student'),//mongoose auto create collection name based on model name for you
+var User = require('mongoose').model('User'),//mongoose auto create collection name based on model name for you
     passport = require('passport');
 
 var getErrorMessage = function (err) {
     var message = '';
-
     if (err.code) {
         switch (err.code) {
             case 11000:
             case 11001:
-                message = 'Student Number already exists';
+                message = 'Username already exists';
                 break;
             default:
                 message = 'Something went wrong';
@@ -36,7 +35,7 @@ exports.renderSignin = function (req, res, next) {
 exports.renderSignup = function (req, res, next) {
     if (!req.user) {
         res.render('signup', {
-            title: 'Sign-up Form',
+            title: 'Signup Form',
             messages: req.flash('error')
         });
     } else {
@@ -46,20 +45,20 @@ exports.renderSignup = function (req, res, next) {
 
 exports.signup = function (req, res, next) {
     if (!req.user) {
-        var student = new Student(req.body);
+        var user = new User(req.body);
         var message = null;
 
-        student.provider = 'local';
-        student.save(function (err) {
+        user.provider = 'local';
+        user.save(function (err) {
             if (err) {
-                //console.log(err);
+                console.log(err);
                 message = getErrorMessage(err);
 
                 req.flash('error', message);
                 return res.redirect('/signup');
             }
 
-            req.login(student, function (err) {
+            req.login(user, function (err) {
                 if (err) return next(err);
                 return res.redirect('/');
             });
@@ -71,7 +70,6 @@ exports.signup = function (req, res, next) {
 
 exports.signout = function (req, res) {
     req.logout();
-
     res.redirect('/');
 };
 
@@ -83,8 +81,7 @@ exports.requiredLogin = function (req, res, next) {
             message: 'User is not logged in'
         });
 
-    }
-    
+    }    
     next();
 };
 

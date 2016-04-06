@@ -3,24 +3,9 @@
 
 <head></head>
   <body>
-<script type="text/javascript" src="lib/angular/angular.js"></script>
-<script type="text/javascript" src="/application.js"></script>
-
-<script type="text/javascript" src="lib/angular-route/angular-route.js"></script>
-<script type="text/javascript" src="lib/angular-resource/angular-resource.js"></script>
-
-<script type="text/javascript" src="clientModule/clientModule.client.module.js"></script>
-<script type="text/javascript" src="clientModule/controllers/clientModule.client.controller.js"></script>
-<script type="text/javascript" src="clientModule/config/clientModule.client.routes.js"></script>
-
-<script type="text/javascript" src="students/students.client.module.js"></script>
-<script type="text/javascript" src="students/services/authentication.client.service.js"></script>
-
-
-<script type="text/javascript" src="/experiences/experiences.client.module.js"></script>
-<script type="text/javascript" src="/experiences/controllers/experiences.client.controller.js"></script>
-<script type="text/javascript" src="/experiences/services/experiences.client.service.js"></script>
-<script type="text/javascript" src="/experiences/config/experiences.client.routes.js"></script>
+      
+      
+      
 
 <!--This is to register user session-->
 <script type="text/javascript">
@@ -30,6 +15,26 @@ window.user = <%- user || 'null'  %>;
 
 <!-- The application Live here -->
 <section ng-view></section>
+      
+<script type="text/javascript" src="lib/angular/angular.js"></script>
+<script type="text/javascript" src="/application.js"></script>
+
+<script type="text/javascript" src="lib/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="lib/angular-resource/angular-resource.js"></script>
+
+<script type="text/javascript" src="courses/courses.client.module.js"></script>
+<script type="text/javascript" src="courses/controllers/courses.client.controller.js"></script>
+<script type="text/javascript" src="courses/services/courses.client.service.js"></script>
+<script type="text/javascript" src="courses/config/courses.client.routes.js"></script>
+
+<script type="text/javascript" src="clientModule/clientModule.client.module.js"></script>
+<script type="text/javascript" src="clientModule/controllers/clientModule.client.controller.js"></script>
+<script type="text/javascript" src="clientModule/config/clientModule.client.routes.js"></script>
+
+<script type="text/javascript" src="students/students.client.module.js"></script>
+<script type="text/javascript" src="students/services/authentication.client.service.js"></script>
+
+
 
 </body>
 

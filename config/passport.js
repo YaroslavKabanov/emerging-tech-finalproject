@@ -1,21 +1,26 @@
 
-var passport = require('passport'), 
+var passport = require('passport'),
     mongoose = require('mongoose');
-    
+
 module.exports = function() {
-    var Student = mongoose.model('Student');
-    passport.serializeUser(function(student, done) {
-            done(null, student.id);
+
+    var User = mongoose.model('User');
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+        
     });
+
     
     passport.deserializeUser(function(id, done) {
-            Student.findOne({
-                _id: id
-            }, '-password -salt', function(err, student) {
-                    done(err, student);
-            });
+        User.findOne({
+            _id: id
+        }, '-password -salt', function(err, user) {
+            done(err, user);
+            
+        });
     });
-    
+
     require('./strategies/local.js')();
-    
+
+
 };

@@ -1,3 +1,4 @@
+/*
 var students = require('../../app/controllers/students.server.controller'),
     experiences = require('../../app/controllers/experiences.server.controller');
 
@@ -21,3 +22,4 @@ module.exports = function (app) {
     app.param('Id', experiences.experienceByUserID);
 
 };
+*/
