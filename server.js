@@ -10,7 +10,7 @@ var app = express();
 var passport = passport();
 
 
-app.listen(3000);
-
 module.exports = app;
+
+app.listen(3000);
 console.log('Server Running at localhost:3000/');

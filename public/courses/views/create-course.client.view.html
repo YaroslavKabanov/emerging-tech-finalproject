@@ -32,9 +32,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">Users</a></li>
-            <li><a href="/#!/courses">Courses</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li class="active"><a href="#contact">Courses</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -56,51 +56,51 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Course List</h1>
-        <p>This list is that all staff have inserted for courses. All staffs are allowed to create, update and delete their own courses.</p>
+        <h1>Create Course</h1>
+        <p>Staffs are able to create courses.</p>
         <br/><br/>
         
-        <a  class="btn btn-info" href="/#!/courses/create">Create new course</a>
-        <a  class="btn btn-info" data-ng-href="/#!">See my courses</a>
+        <a  class="btn btn-info" data-ng-href="#!/courses/create">Create new course</a>
+        <a  class="btn btn-info" data-ng-href="#!">See my courses</a>
         
       </div>
 
 
       <div class="page-header">
-        <h1>Welcome To Blablabla</h1>
+        <h1>Create course</h1>
       </div>
       <p>
           
-        <section class="special" ng-controller="clientModuleController">
-            <div data-ng-show="!authentication.user">
-                <h1>Welcome To Blablabla</h1>
-                <p>First Time Here ?</p>
-                <span><a href="/signup"> Signup</a></span>
-                <br/>
-                
-                <p>Already Have An Account ?</p>
-                <span><a href="/signin"> Signin</a></span></br>
-                
-
-
-            </div>
-            <div data-ng-show="authentication.user">
-                <div data-ng-show="authentication.user.role =='student' ">
-                    <h1>Hello STUDENT <span data-ng-bind="authentication.user.fullName"></span></h1>
-                    <hr> {{authentication.user}}
-                    </br>
-                    <a href="/signout">Signout</a>
+          <section data-ng-controller="CoursesController">
+              
+           <form data-ng-submit="create()" novalidate>
+              <div class="panel-body">
+	           	<div class="form-group">
+	             	<label for="coursecode">Course Code: </label>
+	             	<input type="text" class="form-control" data-ng-model="coursecode" id="coursecode" placeholder="Course Code" required />
+	           	</div>
+	           	<div class="form-group">
+	             	<label for="coursename">Course Name: </label>
+	             	<input type="text" class="form-control" data-ng-model="coursename" id="coursename" placeholder="Course Name" required />
+	           	</div>
+	           	<div class="form-group">
+	            	 <label for="program">Program</label>
+	            	 <input type="text" class="form-control" data-ng-model="program" id="program" placeholder="program" required /> 
+	           	</div>
+	           	<div class="form-group">
+	             	<label for="description">Description</label>
+                    <textarea class="form-control" rows="5" data-ng-model="description" id="description" placeholder="description"></textarea>
+	           	</div>
+	           	<div data-ng-show="error"  class="form-group">
+                    <strong data-ng-bind="error"></strong>
                 </div>
-
-                <div data-ng-show="authentication.user.role =='staff' ">
-                    <h1>Hello STAFF <span data-ng-bind="authentication.user.fullName"></span></h1>
-                    <hr> {{authentication.user}}
-                    </br>
-                    <a href="/signout">Signout</a>
-                </div>
-            </div>
-        </section>
-         
+	           	<button type="submit" class="btn btn-info" >Create</button>
+				<a class="btn btn-default" href="/" role="button">Back to Home</a>
+	        </div>
+              
+           </form>
+            </section>
+ 
       </p>
 
    </div> <!-- /container -->
@@ -115,4 +115,3 @@
 
   </body>
 </html>
-

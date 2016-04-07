@@ -1,27 +1,28 @@
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    Student = require('mongoose').model('Student');
+    User = require('mongoose').model('User');
 
-module.exports = function () {
-    passport.use(new LocalStrategy(function (username, password, done) {
-        Student.findOne({
-            studentNumber: username
-        }, function (err, student) {
+module.exports = function() {
+    passport.use(new LocalStrategy(function(username, password, done) {
+        
+        User.findOne({
+            userName: username
+        }, function(err, user) {
             if (err) {
                 return done(err);
             }
-            if (!student) {
+            if (!user) {
                 return done(null, false, {
-                    message: 'Unknown Student'
+                    message: 'Unknown User'
                 });
             }
-            if (!student.authenticate(password)) {
+            if (!user.authenticate(password)) {
                 return done(null, false, {
                     message: 'Invalid password'
                 });
             }
-            
-            return done(null, student);
+
+            return done(null, user);
         });
     }));
 };
