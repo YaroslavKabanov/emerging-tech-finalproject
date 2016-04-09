@@ -25,7 +25,12 @@ var courseSchema = new Schema({
         trim: true,
         required: 'Program Name Cannot Be Blank'
     },
-    description: String,
+    description: {
+        type: String,
+        default: '',
+        trim: true
+    },
+
     enrollment: {
         student: {
             type: Schema.ObjectId,
@@ -37,12 +42,12 @@ var courseSchema = new Schema({
         },
         editedBy: {
             type: Schema.ObjectId,
-            ref: 'Staff'
+            ref: 'User'
         }
     },
     creator: {
         type: Schema.ObjectId,
-        ref: 'Staff'
+        ref: 'User'
     }
 });
 

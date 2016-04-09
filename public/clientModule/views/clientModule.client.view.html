@@ -1,5 +1,6 @@
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,95 +16,102 @@
     <link href="../../css/bootstrap-theme.min.css" rel="stylesheet">
 
 
-  </head>
-  <body role="document">
+</head>
+
+<body role="document">
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Course Management</a>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Course Management</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">Users</a></li>
+                    <li><a href="/#!/courses">Courses</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">Users</a></li>
-            <li><a href="/#!/courses">Courses</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
     </nav>
 
     <div class="container theme-showcase" role="main">
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Course List</h1>
-        <p>This list is that all staff have inserted for courses. All staffs are allowed to create, update and delete their own courses.</p>
-        <br/><br/>
-        
-        <a  class="btn btn-info" href="/#!/courses/create">Create new course</a>
-        <a  class="btn btn-info" data-ng-href="/#!">See my courses</a>
-        
-      </div>
 
 
-      <div class="page-header">
-        <h1>Welcome To Blablabla</h1>
-      </div>
-      <p>
-          
-        <section class="special" ng-controller="clientModuleController">
-            <div data-ng-show="!authentication.user">
-                <h1>Welcome To Blablabla</h1>
-                <p>First Time Here ?</p>
-                <span><a href="/signup"> Signup</a></span>
-                <br/>
-                
-                <p>Already Have An Account ?</p>
-                <span><a href="/signin"> Signin</a></span></br>
-                
+
+        <div class="page-header">
+            <h1>Welcome To Blablabla</h1>
+        </div>
+        <p>
+
+            <section class="special" ng-controller="clientModuleController">
+                <div data-ng-show="!authentication.user">
+                    <p>First Time Here ?</p>
+                    <span><a href="/signup"> Signup</a></span>
+                    <br/>
+
+                    <p>Already Have An Account ?</p>
+                    <span><a href="/signin"> Signin</a></span></br>
 
 
-            </div>
-            <div data-ng-show="authentication.user">
-                <div data-ng-show="authentication.user.role =='student' ">
-                    <h1>Hello STUDENT <span data-ng-bind="authentication.user.fullName"></span></h1>
-                    <hr> {{authentication.user}}
-                    </br>
-                    <a href="/signout">Signout</a>
+
                 </div>
+                <div data-ng-show="authentication.user">
+                    <div data-ng-show="authentication.user.role =='student' ">
+                        <h1>Hello STUDENT <span data-ng-bind="authentication.user.fullName"></span></h1>
+                        <hr> {{authentication.user}}
+                        </br>
+                        <a href="/signout">Signout</a>
+                    </div>
 
-                <div data-ng-show="authentication.user.role =='staff' ">
-                    <h1>Hello STAFF <span data-ng-bind="authentication.user.fullName"></span></h1>
-                    <hr> {{authentication.user}}
-                    </br>
-                    <a href="/signout">Signout</a>
+                    <div data-ng-show="authentication.user.role =='staff' ">
+                        <h1>Hello STAFF <span data-ng-bind="authentication.user.fullName"></span></h1>
+                        <hr> {{authentication.user}}
+                        <hr>
+                        <!-- Main jumbotron for a primary marketing message or call to action -->
+                        <div class="jumbotron">
+                            <h1>Course List</h1>
+                            <p>This list is that all staff have inserted for courses. All staffs are allowed to create, update
+                                and delete their own courses.</p>
+                            <br/>
+                            <br/>
+
+                            <a class="btn btn-info" href="/#!/courses/create">Create new course</a>
+                            <a class="btn btn-info" data-ng-href="/#!/courses">See my courses</a>
+
+                        </div>
+                        </br>
+                        <a href="/signout">Signout</a>
+                    </div>
                 </div>
-            </div>
-        </section>
-         
-      </p>
+            </section>
 
-   </div> <!-- /container -->
+        </p>
+
+    </div>
+    <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -113,6 +121,6 @@
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/docs.min.js"></script>
 
-  </body>
-</html>
+</body>
 
+</html>
