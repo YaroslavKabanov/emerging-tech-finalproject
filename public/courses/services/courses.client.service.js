@@ -1,7 +1,7 @@
-angular.module('experiences').factory('Experiences', ['$resource',
+angular.module('courses').factory('Courses', ['$resource',
     function ($resource) {
-        return $resource('api/experiences/:experienceId', {
-            experienceId: '@_id',
+        return $resource('api/courses/:courseId', {
+            courseId: '@_id',
             
         }, {
                 update: {
@@ -11,9 +11,9 @@ angular.module('experiences').factory('Experiences', ['$resource',
     }]);
 
 
-angular.module('experiences').factory('ExperiencesByUser', ['$resource',
+angular.module('courses').factory('CoursesByUser', ['$resource',
     function ($resource) {
-        return $resource('api/experiences/student/:Id', {
+        return $resource('api/courses/student/:Id', {
             Id: '@_id'
             },{
                 query:{

@@ -1,0 +1,58 @@
+<style>
+    section {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    form div {
+        color: blue;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+     h1 {
+        color: red;
+        font-size: 30px;
+    }
+    .special a {
+        text-decoration: none;
+        color: forestgreen;
+        font-size: 20px;
+    }
+</style>
+<section data-ng-controller="CoursesController" data-ng-init="findOne()">
+    <h1>Edit Your Course</h1>
+    <form data-ng-submit="update()" novalidate>
+        <div>
+            <label for="courseName">Course Name</label>
+            <div>
+                <input type="text" data-ng-model="courseName" id="courseName" placeholder="Course Name" required>
+            </div>
+        </div>
+
+        <div>
+            <label for="courseCode">Course Code</label>
+            <div>
+                <input type="text" data-ng-model="courseCode" id="courseCode" placeholder="Course Code">
+            </div>
+        </div>
+        <div>
+            <label for="program">Program</label>
+            <div>
+                <input type="text" data-ng-model="program" id="program" placeholder="Program">
+            </div>
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <div>
+                <input type="text" data-ng-model="description" id="description" placeholder="Description" required>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Update">
+        </div>
+        <div data-ng-show="error">
+            <strong data-ng-bind="error"></strong>
+        </div>
+    </form>
+    <hr>
+            <div class="special"> <a href="/#!/courses">View My Courses</a></div>
+</section>

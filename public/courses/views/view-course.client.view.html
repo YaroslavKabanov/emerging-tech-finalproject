@@ -1,0 +1,77 @@
+<style>
+    section {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    label {
+        display: inline-block;
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: blue;
+    }
+    
+    .special a {
+        text-decoration: none;
+        color: forestgreen;
+        font-size: 20px;
+    }
+    
+    h1 {
+        color: red;
+        font-size: 30px;
+    }
+</style>
+
+<section data-ng-controller="CoursesController" data-ng-init="findOne()">
+    <h1>Details:</h1>
+
+    <div data-ng-show="authentication.user != null">
+        <div data-ng-show="authentication.user._id == course.creator._id">
+            <label>Course Name: </label>
+            <label data-ng-bind="course.courseName"></label>
+            <br/>
+            <label>Course Code: </label>
+            <label data-ng-bind="course.courseCode"></label>
+            <br/>
+            <label>Program: </label>
+            <label data-ng-bind="course.program"></label>
+            <br/>
+            <label>Description: </label>
+            <label data-ng-bind="course.description"></label>
+            <br/>
+            <small>
+        <em>by</em>
+        <em data-ng-bind="course.creator.fullName"></em></small>
+            <br>
+            
+            
+            <!-- if staff-->
+            <div class="special">
+                <a href="/#!/courses/{{course._id}}/edit">Edit</a> Or
+                <a href="/#!/courses/" data-ng-click="delete();">Remove</a>
+            </div>
+            <!-- if student -->
+            <!-- if enrolled -->
+            You have already enrolled. do you want to drop it? 
+            <!-- if not enrolled -->
+            Do you want to entroll?
+            
+            
+        </div>
+
+
+        <div data-ng-show="authentication.user._id != course.creator._id">
+            You Are Not Authorized to View this content
+        </div>
+    </div>
+
+
+    <div data-ng-show="authentication.user == null">
+        You Are Not Authorized to View this content
+        </div>
+
+            <hr>
+            <div class="special"> <a href="/#!/">Back To Home Page</a></div>
+            <div class="special"> <a href="/#!/courses">View My Courses</a></div>
+
+</section>
