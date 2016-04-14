@@ -1,0 +1,110 @@
+<section data-ng-controller="CoursesController" data-ng-init="findOne()">
+    <h1>Details:</h1> Course INFO:
+    <br>{{course}}
+    <br>
+    <br>
+    <br> USER INFO:
+    <br> {{authentication.user}}
+    <br>
+    <br>
+    <br>
+    <label>courseCode: </label>
+    <label data-ng-bind="course.courseCode"></label>
+    <br/>
+    <label>courseName: </label>
+    <label data-ng-bind="course.courseName"></label>
+    <br/>
+    <label>program: </label>
+    <label data-ng-bind="course.program"></label>
+    <br/>
+    <label>description: </label>
+    <label data-ng-bind="course.description"></label>
+    <br/>
+
+
+
+
+
+    <small>
+        <em>Provided on</em>
+        <em data-ng-bind="course.created | date:'mediumDate'"></em>
+        <em>by</em>
+        <em data-ng-bind="course.creator.fullName"></em></small>
+    <br>
+    <div data-ng-show="authentication.user._id == course.creator._id">
+
+        <a href="/#!/courses/{{course._id}}/edit">Edit</a>
+        <div data-ng-show="enrollingStudents.length == 0">
+            <a href="/#!/course/" data-ng-click="delete();">Remove</a>
+        </div>
+        
+        ***NOTE: IF THERE ARE STUDENTS ENROLLING IN THE COURSE, YOU ARE NOT ABLE TO REMOVE THE COURSE
+        <br>
+        <br>
+        <br>
+        
+        <div data-ng-init="getEnrollingStudent()">
+            {{enrollingStudents}}
+            <br>
+            <br> {{Students}}
+
+
+            <div>
+                <div style="display:block;float:left;width:30%">
+                    <div data-ng-repeat="student in Students">
+                        {{student.fullName}}
+                    </div>
+                </div>
+
+                <div style="display:block;float:left;width:50%">
+                    <div data-ng-repeat="enrollment in enrollingStudents">
+                        <form data-ng-submit="updateGrade(enrollment._id)" novalidate>
+                            <input type="text" class="form-control" data-ng-model="enrollment.grade" id="grade" placeholder="Grade" required />
+                            <button type="submit" class="btn btn-info">Change Grade</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <br>
+    <br>
+    <div data-ng-show="authentication.user.role == 'student'">
+
+        <div data-ng-show="enrollment.student == authentication.user.id">
+            <a href="/#!/students/courses/" data-ng-click="drop();">drop</a>
+            <br>
+            <br> YOUR ENROLLMENT INFO:
+            <br>{{enrollment}}
+            <br>
+            <br>
+            <br>
+            <br> YOUR CLASSMATE INFO (YOU MAY WANT TO SHOW ONLY THEIR NAME):
+            <br>{{classmates}}
+            <br>
+            <br>
+            <div ng-repeat="classmate in classmates">
+                {{classmate.fullName}}
+            </div>
+        </div>
+        <div data-ng-show="enrollment.student !== authentication.user.id">
+            <form data-ng-submit="enroll()" novalidate>
+                <button type="submit" class="btn btn-info" id="enrollButton">Enroll In Pls</button>
+            </form>
+        </div>
+
+
+
+
+
+        <hr>
+        <div class="special"> <a href="/#!/">Back To Home Page</a></div>
+        <div class="special"> <a href="/#!/students/courses">View My Courses</a></div>
+
+
+
+</section>

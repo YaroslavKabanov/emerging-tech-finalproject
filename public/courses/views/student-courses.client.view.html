@@ -1,0 +1,28 @@
+Your Current Courses
+
+
+<section data-ng-controller="CoursesController" data-ng-init="collectCoursesByStudent()">
+
+    <br> USER INFO:
+    <br> {{authentication.user}}
+
+    <br>
+    <br>
+    <br> LIST OF COURSES HERE
+    <br>{{enrollingCourses}}
+    <br>
+    <br>
+    <div ng-repeat="courseObject in enrollingCourses">
+        <a href="/#!/courses/{{courseObject._id}}">{{courseObject.courseCode}}</a>
+        <br> {{courseObject.courseName}}
+        <br> {{courseObject.program}}
+        <br> {{courseObject.description}}
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <hr>
+    <div class="special"> <a href="/#!/">Back To Home Page</a></div>
+</section>

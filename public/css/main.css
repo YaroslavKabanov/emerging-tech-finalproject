@@ -1,0 +1,36 @@
+/*
+    File name: main.css
+    Author's name: KwangSik Kim
+*/
+
+.content {
+    width: 80%;
+    margin: auto;
+    border: solid 1px #333333;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.label {
+    width: 150px;
+}
+
+.buttons {
+    margin-left: 20% !important;
+}
+
+.tableHeader {
+    background-color: #999999;
+}
+
+td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+textarea {
+    resize: none;
+    width: 300px;
+    height:150px;
+    overflow-y: scroll;
+}

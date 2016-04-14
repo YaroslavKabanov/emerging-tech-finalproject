@@ -8,7 +8,7 @@ var config = require('./config'),
     flash = require('connect-flash'),
     passport = require('passport');
 
-module.exports = function () {
+module.exports = function() {
     var app = express();
 
     if (process.env.NODE_ENV === 'development') {
@@ -40,10 +40,10 @@ module.exports = function () {
     app.use(passport.session());
 
     require('../app/routes/index.server.routes.js')(app);
+    require('../app/routes/users.server.routes.js')(app);
+    require('../app/routes/courses.server.routes.js')(app);
+    require('../app/routes/records.server.routes.js')(app);
 
-    require('../app/routes/students.server.routes.js')(app);
-
-    require('../app/routes/experiences.server.routes.js')(app);
 
     app.use(express.static('./public'));
 

@@ -1,0 +1,42 @@
+<section data-ng-controller="StudentsController" data-ng-init="findOne()">
+    <h1>Details:</h1> {{course}} {{authentication.user}}
+
+    <label>courseCode: </label>
+    <label data-ng-bind="course.courseCode"></label>
+    <br/>
+    <label>courseName: </label>
+    <label data-ng-bind="course.courseName"></label>
+    <br/>
+    <label>program: </label>
+    <label data-ng-bind="course.program"></label>
+    <br/>
+    <label>description: </label>
+    <label data-ng-bind="course.description"></label>
+    <br/>
+
+
+
+
+
+    <small>
+        <em>Provided on</em>
+        <em data-ng-bind="course.created | date:'mediumDate'"></em>
+        <em>by</em>
+        <em data-ng-bind="course.creator.fullName"></em></small>
+    <br>
+    <div data-ng-show="authentication.user._id == course.creator._id">
+
+        <a href="/#!/courses/{{course._id}}/edit">Edit</a> Or
+        <a href="/#!/course/" data-ng-click="delete();">Remove</a>
+
+    </div>
+
+    
+
+    <hr>
+    <div class="special"> <a href="/#!/">Back To Home Page</a></div>
+    <div class="special"> <a href="/#!/courses">View My Courses</a></div>
+
+
+
+</section>

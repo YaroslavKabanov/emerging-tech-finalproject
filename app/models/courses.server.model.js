@@ -8,24 +8,32 @@ var courseSchema = new Schema({
     },
     courseName: {
         type: String,
-        default: '', 
-        trim:true,      
-        required: 'Company Name Cannot Be Blank'
+        default: '',
+        trim: true,
+        required: 'Course Name Cannot Be Blank'
     },
     courseCode: {
         type: String,
         default: '',
-        trim: true
+        trim: true,
+        unique: true,
+        required: 'Course Code Cannot Be Blank'
     },
     program: {
         type: String,
         default: '',
+        trim: true,
+        required: 'Program Name Cannot Be Blank'
+    },
+    description: {
+        type: String,
+        default: '',
         trim: true
     },
-    description:String,
+    
     creator: {
         type: Schema.ObjectId,
-        ref: 'Staff'
+        ref: 'User'
     }
 });
 

@@ -1,0 +1,35 @@
+<section data-ng-controller="CoursesController" data-ng-init="getTranscriptJSON()">
+    {{transcriptCourses}};
+
+    <div>
+        <div style="width:50%;display:block;float:left">
+            <div data-ng-repeat="course in transcriptCourses">
+                <br>
+                <br> {{course.courseCode}}
+                <br> {{course.courseName}}
+                <br>
+            </div>
+        </div>
+        <div style="width:50%;display:block;float:left">
+            <div data-ng-repeat="record in grades">
+                <br>
+                <br> {{record.grade}}
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> Grade API
+    <br>
+    <br>
+    <br>
+    <br>{{grades}}
+
+
+
+
+</section>

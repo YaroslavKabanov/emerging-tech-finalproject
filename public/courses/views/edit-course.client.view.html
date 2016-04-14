@@ -1,0 +1,32 @@
+<section data-ng-controller="CoursesController" data-ng-init="findOne()">
+    {{course}}
+    <h1>Update Course</h1>
+    <form data-ng-submit="update()" novalidate>
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="courseCode">Course Code: </label>
+                <input type="text" class="form-control" data-ng-model="course.courseCode" id="courseCode" placeholder="Course Code" required
+                />
+            </div>
+            <div class="form-group">
+                <label for="courseName">Course Name: </label>
+                <input type="text" class="form-control" data-ng-model="course.courseName" id="courseName" placeholder="Course Name" required
+                />
+            </div>
+            <div class="form-group">
+                <label for="program">Program</label>
+                <input type="text" class="form-control" data-ng-model="course.program" id="program" placeholder="program" required />
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" rows="5" data-ng-model="course.description" id="description" placeholder="description"></textarea>
+            </div>
+            <div data-ng-show="error" class="form-group">
+                <strong data-ng-bind="error"></strong>
+            </div>
+            <button type="submit" class="btn btn-info">Update</button>
+            <a class="btn btn-default" href="/" role="button">Back to Home</a>
+        </div>
+
+    </form>
+</section>
