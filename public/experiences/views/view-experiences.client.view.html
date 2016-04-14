@@ -1,0 +1,84 @@
+<style>
+    section {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    label {
+        display: inline-block;
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: blue;
+    }
+    
+    .special a {
+        text-decoration: none;
+        color: forestgreen;
+        font-size: 20px;
+    }
+    
+    h1 {
+        color: red;
+        font-size: 30px;
+    }
+</style>
+
+<section data-ng-controller="ExperiencesController" data-ng-init="findOne()">
+    <h1>Details:</h1>
+
+    <div data-ng-show="authentication.user != null">
+        <div data-ng-show="authentication.user._id == experience.creator._id">
+
+            <label>Company: </label>
+            <label data-ng-bind="experience.companyName"></label>
+            <br/>
+            <label>City: </label>
+            <label data-ng-bind="experience.city"></label>
+            <br/>
+            <label>Country: </label>
+            <label data-ng-bind="experience.country"></label>
+            <br/>
+            <label>Start Date: </label>
+            <label data-ng-bind="experience.startDate  "></label>
+            <br/>
+            <label>End Date: </label>
+            <label data-ng-bind="experience.endDate "></label>
+            <br/>
+            <label>Position: </label>
+            <label data-ng-bind="experience.position"></label>
+            <br/>
+            <label>Details: </label>
+            <label data-ng-bind="experience.details"></label>
+            <br/>
+
+
+
+
+            <small>
+        <em>Provided on</em>
+        <em data-ng-bind="experience.created | date:'mediumDate'"></em>
+        <em>by</em>
+        <em data-ng-bind="experience.creator.fullName"></em></small>
+            <br>
+            <div class="special">
+                <a href="/#!/experiences/{{experience._id}}/edit">Edit</a> Or
+                <a href="/#!/experiences/" data-ng-click="delete();">Remove</a>
+            </div>
+
+        </div>
+
+
+        <div data-ng-show="authentication.user._id != experience.creator._id">
+            You Are Not Authorized to View this content
+        </div>
+    </div>
+
+
+    <div data-ng-show="authentication.user == null">
+        You Are Not Authorized to View this content
+        </div>
+
+            <hr>
+            <div class="special"> <a href="/#!/">Back To Home Page</a></div>
+            <div class="special"> <a href="/#!/experiences">View My Experiences</a></div>
+
+</section>

@@ -1,0 +1,34 @@
+<section data-ng-controller="StudentsController" data-ng-init="find()">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Program</th>
+                <th>Creator</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <tr data-ng-repeat="course in courses">
+                <td>
+                    <div data-ng-show="authentication.user._id == course.creator._id">
+                        <a class="btn btn-info" data-ng-href="/#!/courses/{{course._id}}/edit">Edit</a>
+                    </div>
+                </td>
+                <td>
+                    <a data-ng-href="/#!/courses/{{course._id}}" data-ng-bind="course.courseCode"></a>
+                </td>
+                <td><small data-ng-bind="course.courseName"></small></td>
+                <td><small data-ng-bind="course.program"></small></td>
+                <td><small data-ng-bind="course.creator.fullName"></small></td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+<hr>
+<a class="btn btn-info" href="/signout">Sign Out</a>
+<a class="btn btn-info" href="/#!/">Back To Home</a>
