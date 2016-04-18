@@ -166,7 +166,8 @@ angular.module('courses').controller('CoursesController', [
 
 
         };
-
+        
+        $scope.date = new Date();
     }
 ]);
 

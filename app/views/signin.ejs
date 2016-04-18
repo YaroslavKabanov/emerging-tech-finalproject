@@ -1,55 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>
-    <%=title %>
-    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/docs.min.js"></script>
+    <!-- Bootstrap theme -->
+    <link href="../../css/bootstrap-theme.min.css" rel="stylesheet">
     
-    <style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    
-    form div {
-        color: blue;
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-     h1 {
-        color: red;
-        font-size: 30px;
-    }
-    .special a {
-        text-decoration: none;
-        color: forestgreen;
-        font-size: 20px;
-    }
-</style>
+    <title><%=title %></title>
 </head>
 <body>
-<h1>Sign In</h1>
-    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand" href="#">Course Management</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/#!/">Home</a></li>
+                    <li><a href="/">Users</a></li>
+                    <li><a href="/#!/courses">Courses</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br><br>
 
-    <form action="/signin" method="post">
-    <% for(var i in messages) { %>
-    <div class="flash"><%= messages[i] %></div>
-    <% } %>
-        <div>
-        <label>Username:</label>
-        <!--Case sensitive username-->
-        <input type="text" value="michael" name="username" />
-        </div>
-        <div>
-        <label>Password:</label>
-        <input type="password" value="password" name="password" />
-        </div>
-        <div>
-        <input type="submit" value="Sign In" />
-        </div>
-    </form>
-    
-    <hr>
-    <div class="special"> <a href="/#!/">Back To Home Page</a></div>
+    <div class="container">
+        <div class="jumbotron">
 
-</body>
+            <form class="form-horizontal" role="form" action="/signin" method="post">
+                <% for(var i in messages) { %>
+                    <div class="flash">
+                        <%= messages[i] %>
+                    </div>
+                    <% } %>
+                        <div class="form-group">
+                            <h2> Sign In </h2>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Username: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="username" placeholder="Enter username" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Password: </label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password" placeholder="Enter password" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <input type="submit" class="btn btn-success" value="Sign In" />
+                            </div>
+                        </div>
+            </form>
+            <hr>
+            <div class="special"> <a href="/#!/">Back To Home Page</a></div>
+        </div>
+    </div>
+ </body>
 </html>

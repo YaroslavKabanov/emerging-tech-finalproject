@@ -1,35 +1,112 @@
-<section data-ng-controller="CoursesController" data-ng-init="getTranscriptJSON()">
-    {{transcriptCourses}};
+<html>
 
-    <div>
-        <div style="width:50%;display:block;float:left">
-            <div data-ng-repeat="course in transcriptCourses">
-                <br>
-                <br> {{course.courseCode}}
-                <br> {{course.courseName}}
-                <br>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Course Management System</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/docs.min.js"></script>
+    <!-- Bootstrap theme -->
+    <link href="../../css/bootstrap-theme.min.css" rel="stylesheet">
+    
+    <!--Custom CSS-->
+    <link href="../../css/transcript.css" rel="stylesheet">
+
+</head>
+
+<body role="document">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Course Management</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/#!/">Home</a></li>
+                    <li><a href="/#!/courses">Courses</a></li>               
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-controller="clientModuleController">
+                    <li class="active"><a href="#"> {{authentication.user.userName}} </a> </li>
+                    <li data-ng-show="authentication.user"><a href="/signout">Sign Out</a></li>
+                </ul>
             </div>
         </div>
-        <div style="width:50%;display:block;float:left">
-            <div data-ng-repeat="record in grades">
-                <br>
-                <br> {{record.grade}}
-                <br>
-                <br>
-            </div>
+    </nav>
+    </br>
+    </br>
+    </br>
+    </br>
+    
+    <section data-ng-controller="CoursesController" data-ng-init="getTranscriptJSON()" class="container theme-showcase" role="main">
+        <div class="upperColor">
+            <table style="width:100%">
+                <tr>
+                    <td style="width: 10%">
+                        <div>
+                            <img src="/images/centennialLogo.JPG" />
+                        </div>
+                    </td>
+                    <td style="width:30%">
+                        <small class="titleText">
+                            <b>Enrollment Services </br>
+                            P.O. Box 631, Station A </br>
+                            Toronto, Ontario M1K 5E9</b>    
+                        </small>
+                        </br>
+                        </br>
+                        <small>
+                            <b>Student &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b> {{authentication.user.fullName}}</br>
+                            <b>ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b> {{authentication.user.userName}}</br>
+                            <b>Date Issued :</b> {{date | date:'dd-MMM-yyyy'}}</br>
+                        </small>
+                    </td>
+                    <td style="width:60%">
+                        <div class="titleText">
+                            <h2>TRANSCRIPT</h2>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <b><hr class="titleText"></hr></b>
+        </div>       
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div>
+                        <tr data-ng-repeat="course in transcriptCourses" style="text-align: left">
+                            <td><small data-ng-bind="course.courseCode"></small></td>
+                            <td><small data-ng-bind="course.courseName"></small></td>
+                            <td data-ng-repeat="record in grades" data-ng-show="authentication.user._id == record.student && course._id == record.course">
+                                <small data-ng-bind="record.grade"></small>
+                            </td>
+                        </tr>
+                    </div>
+                </tbody>
+            </table>
+            <b><hr class="titleText"></hr></b>
         </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br> Grade API
-    <br>
-    <br>
-    <br>
-    <br>{{grades}}
+    </section>
+</body>
 
-
-
-
-</section>
+</html>

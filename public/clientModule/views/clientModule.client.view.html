@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -12,9 +12,11 @@
 
     <!-- Bootstrap core CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/docs.min.js"></script>
     <!-- Bootstrap theme -->
     <link href="../../css/bootstrap-theme.min.css" rel="stylesheet">
-
 
 </head>
 
@@ -25,7 +27,7 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                aria-controls="navbar">
+                    aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -35,98 +37,66 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">Users</a></li>
+                    <li class="active"><a href="/#!/">Home</a></li>
                     <li><a href="/#!/courses">Courses</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
+                 
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-controller="clientModuleController">
+                    <li class="active"><a href="/#!/"> {{authentication.user.userName}} </a> </li>
+                    <li data-ng-show="authentication.user"><a href="/signout">Sign Out</a></li>
                 </ul>
             </div>
-            <!--/.nav-collapse -->
         </div>
     </nav>
 
     <div class="container theme-showcase" role="main">
 
-
-
-
+        <br> <br>
         <div class="page-header">
-            <h1>Welcome To Blablabla</h1>
+            <h1>Welcome To Our Course Manager</h1>
         </div>
-        <p>
+        <div class="container">
+            <div class="jumbotron">
 
-            <section class="special" ng-controller="clientModuleController">
-                <div data-ng-show="!authentication.user">
-                    <p>First Time Here ?</p>
-                    <span><a href="/signup"> Signup</a></span>
-                    <br/>
-
-                    <p>Already Have An Account ?</p>
-                    <span><a href="/signin"> Signin</a></span></br>
-
-
-
-                </div>
-                <div data-ng-show="authentication.user">
-                    <div data-ng-show="authentication.user.role =='student' ">
-                        <h1>Hello STUDENT <span data-ng-bind="authentication.user.fullName"></span></h1>
-                        <hr> {{authentication.user}}
-                        <br>
-                        <a class="btn btn-info" data-ng-href="/#!/courses">See Available Courses</a>
-                        <a class="btn btn-info" data-ng-href="/#!/students/courses">See Your Current Courses</a>
-                        <a class="btn btn-info" data-ng-href="/#!/students/transcript">View My Transcript</a>
-
-                        <a class="btn btn-info" href="/signout">Sign Out</a>
-                        </br>
-
-                    </div>
-
-                    <div data-ng-show="authentication.user.role =='staff' ">
-                        <h1>Hello STAFF <span data-ng-bind="authentication.user.fullName"></span></h1>
-                        <hr> {{authentication.user}}
+                <section class="special" ng-controller="clientModuleController">
+                    <div data-ng-show="!authentication.user">
+                        <p>First Time Here ?</p>
+                        <span><a href="/signup"> Sign Up</a></span>
+                        <br/>
                         <hr>
-                        <!-- Main jumbotron for a primary marketing message or call to action -->
-                        <div class="jumbotron">
-                            <h1>Course List</h1>
-                            <p>This list is that all staff have inserted for courses. All staffs are allowed to create, update
-                                and delete their own courses.</p>
-                            <br/>
-                            <br/>
-
-                            <a class="btn btn-info" href="/#!/courses/create">Create new course</a>
-                            <a class="btn btn-info" data-ng-href="/#!/courses">See my courses</a>
-
-                        </div>
-                        </br>
-                        <a href="/signout">Signout</a>
+                        <p> Already Have An Account?</p>
+                        <span><a href="/signin"> Sign In</a></span></br>
                     </div>
-                </div>
-            </section>
 
-        </p>
+                    <div data-ng-show="authentication.user">
+                        <div data-ng-show="authentication.user.role =='student' ">
+                            <h2>Hello Student, <span data-ng-bind="authentication.user.fullName"></span>!</h2>
+                            <hr>
+                            <br> <br>
+                            <a class="btn btn-default" data-ng-href="/#!/courses">See Available Courses</a>
+                            <a class="btn btn-default" data-ng-href="/#!/students/courses">See Your Current Courses</a>
+                            <a class="btn btn-default" data-ng-href="/#!/students/transcript">View My Transcript</a>
+                            </br>
+                        </div>
 
+                        <div data-ng-show="authentication.user.role =='staff' ">
+                            <h2>Hello Staff, <span data-ng-bind="authentication.user.fullName"></span>!</h2>
+                            <div class="jumbotron">
+                                <h1>Course List</h1>
+                                <small>This list is that all staff have inserted for courses. All staffs are allowed to create,
+                                    update and delete their own courses.</small>
+                                <br/>
+                                <br/>
+                                <a class="btn btn-default" href="/#!/courses/create"><b>Create new course</b></a>
+                                <a class="btn btn-default" data-ng-href="/#!/courses"><b>See my courses</b></a>
+                            </div>
+                            </br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
-    <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/docs.min.js"></script>
-
 </body>
 
 </html>
